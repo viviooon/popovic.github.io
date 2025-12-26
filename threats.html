@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyber Security Services</title>
+
+  
+  <link rel="stylesheet" href="services.css">
+
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+   
+    #bgCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0; 
+      pointer-events: none; 
+    }
+
+   
+    body > *:not(#bgCanvas) {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body class="services">
+
+  
+  <canvas id="bgCanvas"></canvas>
+
+  <header class="top-nav">
+    <div class="logo">
+      <img src="logo.png" alt="Cyber Security Logo">
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <div class="nav-dropdown">
+        <a href="services.html">Services ▾</a>
+        <div class="dropdown-menu">
+          <a href="services.html">Security Audits</a>
+          <a href="services.html">Penetration Testing</a>
+          <a href="services.html">Incident Response</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="threats.html">Threats ▾</a>
+        <div class="dropdown-menu">
+          <a href="threats.html">Malware</a>
+          <a href="threats.html">Phishing</a>
+          <a href="threats.html">Ransomware</a>
+        </div>
+      </div>
+      <a href="index.html#resources">Resources</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+<section class="info">
+
+ 
+  <div class="service-card">
+    <div class="service-header">
+      <i class="fa-solid fa-shield-halved"></i>
+      <h3>Malware</h3>
+    </div>
+
+    <p>
+      Malware is malicious software designed to infiltrate, damage, or gain unauthorized
+      access to computer systems and networks. It often operates silently in the background,
+      compromising data and system integrity without the user’s awareness.
+    </p>
+
+    <p>
+      Common forms of malware include viruses, trojans, ransomware, and spyware, each with
+      different methods of infection and impact. Malware attacks can lead to data theft,
+      system slowdowns, financial losses, and long-term security breaches.
+    </p>
+
+    <p><strong>Example:</strong></p>
+    <p>
+      A user downloads a free PDF converter from an unofficial website. Along with the
+      software, a hidden trojan is installed that records keystrokes and secretly sends
+      login credentials to an attacker.
+    </p>
+
+    <p>
+      Strong endpoint protection, regular software updates, and cautious user behavior
+      are key defenses against malware-based threats.
+    </p>
+  </div>
+
+  <div class="service-divider"></div>
+
+
+  <div class="service-card">
+    <div class="service-header">
+      <i class="fa-solid fa-bug"></i>
+      <h3>Phishing</h3>
+    </div>
+
+    <p>
+      Phishing is a social engineering attack that manipulates users into revealing sensitive
+      information such as passwords, credit card numbers, or login credentials. Attackers
+      disguise themselves as trusted organizations through emails, fake websites, or text messages.
+    </p>
+
+    <p>
+      These attacks are effective because they exploit human trust rather than technical
+      weaknesses. A single click on a malicious link can result in credential theft,
+      identity fraud, or unauthorized system access.
+    </p>
+
+    <p><strong>Example phishing email:</strong></p>
+
+    <div class="phishing-example">
+      <p><strong>From:</strong> security@paypaI-support.com</p>
+      <p><strong>Subject:</strong> Urgent: Your account has been limited</p>
+      <p>
+        Dear customer,<br><br>
+        We detected unusual activity on your account. To restore full access,
+        please verify your information immediately by clicking the link below.<br><br>
+        👉 <em>Verify Account Now</em><br><br>
+        Failure to act within 24 hours may result in permanent suspension.
+      </p>
+    </div>
+
+    <p>
+      In this example, attackers rely on urgency, fear, and a fake sender address to trick
+      users into entering their credentials on a fraudulent website.
+    </p>
+
+    <p>
+      User awareness, email filtering, and verification of online communications are essential
+      to reducing phishing risks.
+    </p>
+  </div>
+
+  <div class="service-divider"></div>
+
+  
+  <div class="service-card">
+    <div class="service-header">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      <h3>Ransomware</h3>
+    </div>
+
+    <p>
+      Ransomware is a highly disruptive form of malware that encrypts a victim’s files and
+      demands payment—often in cryptocurrency—for their release. These attacks can completely
+      halt business operations and cause severe financial and reputational damage.
+    </p>
+
+    <p>
+      Ransomware commonly spreads through phishing emails, malicious downloads, or unpatched
+      software vulnerabilities. Even after payment, data recovery is not guaranteed.
+    </p>
+
+    <p><strong>Example:</strong></p>
+    <p>
+      An employee opens an email attachment labeled “Invoice_2025.pdf”. The file executes
+      ransomware that encrypts the company’s shared network drive, displaying a message
+      demanding payment within 72 hours to restore access.
+    </p>
+
+    <p>
+      Regular backups, system patching, and proactive monitoring are critical strategies
+      for minimizing the impact of ransomware attacks.
+    </p>
+  </div>
+
+</section>
+
+
+
+  
+  <script>
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particlesArray = [];
+    const maxDistance = 150;
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.speedY = Math.random() * 1 - 0.5;
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      }
+
+      draw() {
+        ctx.fillStyle = '#00ffff';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function initParticles(num) {
+      for (let i = 0; i < num; i++) {
+        particlesArray.push(new Particle());
+      }
+    }
+
+    function connectParticles() {
+      for (let a = 0; a < particlesArray.length; a++) {
+        for (let b = a; b < particlesArray.length; b++) {
+          let dx = particlesArray[a].x - particlesArray[b].x;
+          let dy = particlesArray[a].y - particlesArray[b].y;
+          let distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < maxDistance) {
+            ctx.strokeStyle = `rgba(0, 255, 255, ${0.2 * (1 - distance / maxDistance)})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    function animate() {
+      ctx.fillStyle = 'rgba(10, 10, 20, 0.85)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      particlesArray.forEach(p => { p.update(); p.draw(); });
+      connectParticles();
+      requestAnimationFrame(animate);
+    }
+
+    initParticles(100);
+    animate();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+
+ <footer>
+  <div class="footer-container">
+    <p>&copy; 2025 YourSite. All rights reserved.</p>
+    <div class="socials">
+      <a href="#" target="_blank">Twitter</a>
+      <a href="#" target="_blank">LinkedIn</a>
+      <a href="#" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+
